@@ -14,7 +14,7 @@ Stwórz nową notatkę
 <i class="bi bi-emoji-frown"></i>
 Jeszcze nie ma żadnych notatek do wyświetlenia
 </div>
-<notes-list v-else v-bind:notes="notes" v-on:onShowNote="showNote($event)" v-on:onDeleteNote="deleteNote($event)"></notes-list>
+<notes-list v-else v-bind:notes="notes" v-on:onShowNote="showNote($event)" v-on:note-delete="onDeleteNote($event)"></notes-list>
 </div>
 <div class="col-12 col-md-7 col-lg-8 bg-white p-0">
 <div class="cover d-none d-sm-block"></div>
@@ -50,7 +50,7 @@ currentNote: null,
 }
 },
 methods: {
-addNote: function (note){
+onAddNote: function (note){
 var newNote = {
 name: note.name,
 content: note.content,
@@ -61,9 +61,22 @@ this.showAddForm = false;
 this.currentNote = response.data;
 });
 },
-showAddForm: function (){
+onShowAddForm: function (){
+this.currentNote = null;
+this.showAddForm = true;
+},
+onDeleteNote: function (note){
+this.showAddForm = false;
+if (note === this.currentNote){
 this.currentNote = null;
 }
+this.notes = this.notes.filter((n) => { return n !== note; });
+},
+onShowNote: function (note){
+this.showAddForm = false;
+this.currentNote = note;
+}
+
 },
 mounted() {
 this.$http.get('notes').then(response => {

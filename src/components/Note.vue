@@ -1,5 +1,6 @@
 <template>
 	<div class="p-4">
+	
 		<div class="my-2 p-2 bg-secondary text-center text-white">
 			<i class="bi-sticky"></i> {{note.name}}
 		</div>

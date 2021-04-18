@@ -29,7 +29,7 @@
 	this.$emit("on-show-note", note);
 	},
 	deleteNote: function (note){
-	this.$emit("on-delete-note", note);
+	this.$emit("note-delete", note);
 	}
 	},
 	}
