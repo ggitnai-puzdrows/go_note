@@ -88,7 +88,7 @@
 
 <style>
 	.cover {
-	background-image: url("./assets/background2.jpg");
+	background-image: url("./assets/background2.jpeg");
 	background-position: center;
 	background-size: cover;
 	min-height: 150px;
